@@ -11,13 +11,13 @@
 class Node {
 private:
     std::string line; // A line from the text
-    std::shared_ptr<Node>* next; // pointer to next node
+    std::shared_ptr<Node> next; // pointer to next node
 public:
     Node();
     void setLine(const std::string& aLine);
-    void setNext(std::shared_ptr<Node>* nextNodePtr);
+    void setNext(std::shared_ptr<Node> nextNodePtr);
     std::string getLine() const ;
-    std::shared_ptr<Node>* getNext() const ;
+    std::shared_ptr<Node> getNext() const ;
 };
 
 
