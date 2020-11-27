@@ -43,7 +43,7 @@ bool LinkedList::insert(int newPosition, const Node &newEntry) {
   bool ableToInsert =  (newPosition >= 1) && (newPosition <= itemCount + 1);
   if(ableToInsert){
     //create a new node containing the new entry
-    std::shared_ptr<Node> newNodePtr(new Node(newEntry) );
+    auto newNodePtr = std::make_shared<Node>(Node(newEntry));
 
     //attach new node to chain
     if(newPosition == 1){
@@ -52,7 +52,7 @@ bool LinkedList::insert(int newPosition, const Node &newEntry) {
       headPtr = newNodePtr;
     } else {
       // Find node that will be before nre node
-      std::shared_ptr<Node> prevPtr(getNodeAt(newPosition - 1));
+      auto prevPtr = getNodeAt(newPosition-1);
 
       //Insert new node after node to which prevPtr points
       newNodePtr->setNext(prevPtr->getNext());
@@ -87,21 +87,33 @@ bool LinkedList::remove(int position) {
 }
 
 bool LinkedList::removeDuplicates() {
-  std::shared_ptr<Node> ptr1(headPtr);
-  std::shared_ptr<Node> ptr2;
-  int positionToRemove = 1;
+//  std::shared_ptr<Node> temp(headPtr);
+  auto temp = headPtr;
+  std::shared_ptr<Node> temp2;
 
-  while (ptr1 != nullptr && ptr2->getNext() != nullptr){
-    ptr2 = ptr1;
-    while (ptr2->getNext() != nullptr){
-      if(ptr1->getLine() == ptr2->getNext()->getLine()){
+  int positionToRemove = 2;
+  bool dremoved = false;
+
+  // As the headPtr exists & there is a next node...
+  while (temp != nullptr && temp->getNext() != nullptr){
+//    std::cout << "Okay... inside the 1st while." << std::endl;
+    temp2 = temp;
+//    std::cout << temp2->getLine();
+    while (temp2->getNext() != nullptr){
+      // If duplicate... then delete it
+      if(temp->getLine() == temp2->getNext()->getLine()){
+        temp2->setNext(temp2->getNext()->getNext());
         remove(positionToRemove);
+        positionToRemove=1;
       } else{
-        ptr2 = ptr2->getNext();
+        temp2 = temp2->getNext();
       }
+      positionToRemove++;
+      dremoved = true;
     }
-    positionToRemove++;
+    temp = temp->getNext();
   }
+  return dremoved;
 }
 
 
@@ -113,7 +125,7 @@ void LinkedList::clear() {
 void LinkedList::displayList() {
   std::shared_ptr<Node> curNode = headPtr;
   while (curNode != nullptr){
-    std::cout << headPtr->getLine() << std::endl;
+    std::cout << "    • " << curNode->getLine() << std::endl;
     curNode = curNode->getNext();
   }
 }

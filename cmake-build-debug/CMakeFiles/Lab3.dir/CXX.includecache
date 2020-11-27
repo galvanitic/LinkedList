@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/rgalvan/Documents/austincc/Data Struct and Algo/code/Lab3/LinkedList.h
+LinkedListInterface.h
+/Users/rgalvan/Documents/austincc/Data Struct and Algo/code/Lab3/LinkedListInterface.h
+Node.h
+/Users/rgalvan/Documents/austincc/Data Struct and Algo/code/Lab3/Node.h
+iostream
+-
+
+/Users/rgalvan/Documents/austincc/Data Struct and Algo/code/Lab3/LinkedListInterface.h
+Node.h
+/Users/rgalvan/Documents/austincc/Data Struct and Algo/code/Lab3/Node.h
+
+/Users/rgalvan/Documents/austincc/Data Struct and Algo/code/Lab3/Node.h
+string
+-
+memory
+-
+
+/Users/rgalvan/Documents/austincc/Data Struct and Algo/code/Lab3/main.cpp
+iostream
+-
+fstream
+-
+string
+-
+Node.h
+/Users/rgalvan/Documents/austincc/Data Struct and Algo/code/Lab3/Node.h
+LinkedList.h
+/Users/rgalvan/Documents/austincc/Data Struct and Algo/code/Lab3/LinkedList.h
+
